@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 - 게시글 관리</title>
+    <style>
+        body { font-family: sans-serif; margin: 30px; background-color: #f4f6f9; }
+        .admin-container { max-width: 1000px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 15px; margin-bottom: 20px; }
+        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .nav-tab { padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px; }
+        .nav-tab.active { background-color: #337ab7; color: white; }
+        .nav-tab.inactive { background-color: #e9ecef; color: #495057; }
+        .nav-tab.inactive:hover { background-color: #dee2e6; }
+        .search-box { display: flex; gap: 8px; margin-bottom: 20px; }
+        .search-box select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .search-box input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .search-box button { padding: 8px 16px; background-color: #337ab7; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 14px; }
+        th { background-color: #f8f9fa; }
+        td a { color: #333; text-decoration: none; }
+        td a:hover { text-decoration: underline; color: #337ab7; }
+        .btn-action { padding: 4px 8px; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; font-size: 12px; font-weight: bold; }
+        .btn-view { background-color: #5bc0de; color: white; margin-right: 4px; }
+        .btn-delete { background-color: #d9534f; color: white; }
+        .btn-delete:hover { background-color: #c9302c; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <div class="header">
+        <h2 style="margin: 0;">관리자 대시보드</h2>
+        <span>접속 계정: <b>admin (ADMIN)</b></span>
+    </div>
+
+    <!-- 상단 탭 메뉴 -->
+    <div class="nav-tabs">
+        <a href="/admin/users" class="nav-tab inactive">회원 관리</a>
+        <a href="/admin/posts" class="nav-tab active">게시글 관리</a>
+    </div>
+
+    <!-- 검색 영역 -->
+    <form class="search-box" action="/admin/posts" method="GET">
+        <select name="type">
+            <option value="all">전체</option>
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+            <option value="content">내용</option>
+        </select>
+        <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    <!-- 게시글 관리 테이블 -->
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 6%;">번호</th>
+                <th style="width: 40%;">제목</th>
+                <th style="width: 14%;">작성자 ID</th>
+                <th style="width: 8%;">조회수</th>
+                <th style="width: 14%;">작성일시</th>
+                <th style="width: 18%;">관리 기능</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td><a href="/board/view?id=3">공지사항 안내입니다.</a></td>
+                <td>admin</td>
+                <td>124</td>
+                <td>2026-08-20 10:30</td>
+                <td>
+                    <a href="/board/view?id=3" class="btn-action btn-view">보기</a>
+                    <a href="/admin/posts/delete?id=3" class="btn-action btn-delete" onclick="return confirm('관리자 권한으로 해당 게시글을 강제 삭제하시겠습니까?');">강제 삭제</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="/board/view?id=2">웹 보안 실습 질문 있습니다.</a></td>
+                <td>user01</td>
+                <td>45</td>
+                <td>2026-08-20 15:30</td>
+                <td>
+                    <a href="/board/view?id=2" class="btn-action btn-view">보기</a>
+                    <a href="/admin/posts/delete?id=2" class="btn-action btn-delete" onclick="return confirm('관리자 권한으로 해당 게시글을 강제 삭제하시겠습니까?');">강제 삭제</a>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><a href="/board/view?id=1">첫 번째 게시글입니다.</a></td>
+                <td>hong</td>
+                <td>89</td>
+                <td>2026-08-19 18:10</td>
+                <td>
+                    <a href="/board/view?id=1" class="btn-action btn-view">보기</a>
+                    <a href="/admin/posts/delete?id=1" class="btn-action btn-delete" onclick="return confirm('관리자 권한으로 해당 게시글을 강제 삭제하시겠습니까?');">강제 삭제</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

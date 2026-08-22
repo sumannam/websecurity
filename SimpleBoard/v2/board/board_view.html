@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; background-color: #f5f5f5; }
+        .board-container { max-width: 800px; margin: auto; background: white; padding: 25px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .search-box { display: flex; gap: 8px; margin-bottom: 20px; }
+        .search-box input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .search-box button { padding: 8px 16px; background-color: #337ab7; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border-bottom: 1px solid #ddd; padding: 12px; text-align: left; font-size: 14px; }
+        th { background-color: #f8f9fa; }
+        td a { color: #333; text-decoration: none; }
+        td a:hover { text-decoration: underline; color: #337ab7; }
+        .btn-write { padding: 8px 14px; background-color: #5cb85c; color: white; border: none; border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: bold; }
+        .btn-write:hover { background-color: #4cae4c; }
+        .footer-links { text-align: right; }
+    </style>
+</head>
+<body>
+
+<div class="board-container">
+    <div class="header">
+        <h2>자유게시판</h2>
+        <a href="/board/write" class="btn-write">글쓰기</a>
+    </div>
+
+    <form class="search-box" action="/board" method="GET">
+        <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 8%;">번호</th>
+                <th style="width: 50%;">제목</th>
+                <th style="width: 15%;">작성자</th>
+                <th style="width: 17%;">작성일시</th>
+                <th style="width: 10%;">조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td><a href="/board/view?id=3">공지사항 안내입니다.</a></td>
+                <td>admin</td>
+                <td>2026-08-20</td>
+                <td>124</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="/board/view?id=2">웹 보안 실습 질문 있습니다.</a></td>
+                <td>user01</td>
+                <td>2026-08-20</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><a href="/board/view?id=1">첫 번째 게시글입니다.</a></td>
+                <td>hong</td>
+                <td>2026-08-19</td>
+                <td>89</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
